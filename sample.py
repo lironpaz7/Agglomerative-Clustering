@@ -14,7 +14,4 @@ class Sample:
         :param other: Object of class Sample.
         :return: Euclidean distance
         """
-        sum_of_distances = 0
-        for i in range(len(self.genes)):
-            sum_of_distances += (self.genes[i] - other.genes[i]) ** 2
-        return sqrt(sum_of_distances)
+        return sqrt(sum([(x - y) ** 2 for x, y in zip(self.genes, other.genes)]))

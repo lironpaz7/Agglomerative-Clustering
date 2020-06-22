@@ -1,10 +1,4 @@
-import abc
-
-from cluster import Cluster
-
-
 class Link:
-    @abc.abstractmethod
     def compute(self, cluster, other, distances=None):
         pass
 
@@ -19,11 +13,11 @@ class SingleLink(Link):
         :param distances: matrix of distances
         :return: Distance
         """
-        minimum = False
+        minimum = distances[0][1]
         for sample1 in cluster.samples:
             for sample2 in other.samples:
                 dist = distances[sample1.s_id][sample2.s_id]
-                if minimum is False or dist < minimum:
+                if dist < minimum:
                     minimum = dist
         return minimum
 

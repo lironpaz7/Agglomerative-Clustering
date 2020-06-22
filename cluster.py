@@ -46,8 +46,5 @@ class Cluster:
         This method edits the print option of the class.
         :return: print format
         """
-        samples = []
-        for sample in self.samples:
-            samples.append(sample.s_id)
-        samples.sort()
-        return f"Cluster {self.c_id}: {samples}, dominant label: {self.dominant_label}, purity: {self.purity}"
+        return f"Cluster {self.c_id}: {sorted([sample.s_id for sample in self.samples])}, " \
+               f"dominant label: {self.dominant_label}, purity: {self.purity}"

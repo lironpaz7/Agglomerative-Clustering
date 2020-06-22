@@ -17,10 +17,5 @@ class Data:
         Finally adds each object into a set.
         """
         for s_id in range(len(self.data["sample"])):
-            genes = []
-            for key in self.data.keys():
-                # we don't want to append the label value and the sample_id.
-                if key not in WRONG_KEYS:
-                    genes.append(self.data[key][s_id])
-            sample = Sample(s_id, genes, self.data["label"][s_id])
-            self.samples.add(sample)
+            self.samples.add(Sample(s_id, [self.data[key][s_id] for key in self.data.keys() if key not in WRONG_KEYS],
+                                    self.data["label"][s_id]))
